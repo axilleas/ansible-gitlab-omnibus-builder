@@ -1,0 +1,2 @@
+git_repository: "https://git.foss.ntua.gr/fossntua/omnibus-gitlab.git"
+git_branch: "custom_login"

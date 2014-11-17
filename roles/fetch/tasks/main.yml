@@ -1,0 +1,8 @@
+---
+# file: roles/common/tasks/fetch.yml
+- name: checkout custom_login branch
+  sudo: yes
+  sudo_user: omnibus-build
+  git: repo="{{ git_repository }}"
+       version="{{ git_branch }}"
+       dest=/home/omnibus-build/omnibus-gitlab/

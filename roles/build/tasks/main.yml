@@ -1,0 +1,12 @@
+---
+- name: install gem dependencies for omnibus-ruby
+  sudo: yes
+  sudo_user: omnibus-build
+  shell: chdir=/home/omnibus-build/omnibus-gitlab/
+         /usr/local/bin/bundle install --path .bundle --binstubs
+
+- name: package omnibus-gitlab
+  sudo: yes
+  sudo_user: omnibus-build
+  shell: chdir=/home/omnibus-build/omnibus-gitlab/
+         ./bin/omnibus build gitlab

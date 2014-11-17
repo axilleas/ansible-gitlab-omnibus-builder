@@ -1,0 +1,15 @@
+[debian]
+omnibus.local
+debian-do
+
+[centos]
+centos.local
+centos7.local
+
+[digitalocean]
+debian-do
+
+[local]
+omnibus.local
+centos.local
+centos7.local

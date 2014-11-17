@@ -1,0 +1,12 @@
+---
+# This playboook builds an omnibus GitLab package.
+#
+# requires --extra-vars="target=hostname"
+#
+- name: Build omnibus GitLab
+  hosts: {{ target }}
+  roles:
+    - common
+    - fetch
+    - clean
+    - build

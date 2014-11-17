@@ -1,0 +1,11 @@
+---
+# file: roles/clean/tasks/fetch.yml
+- name: clean previous builds
+  sudo: yes
+  file: path={{ item }} state=absent force=true
+  with_items:
+    - /var/cache/omnibus/src/gitlab-rails
+    - /var/cache/omnibus/pkg
+    - /var/cache/omnibus/cache/cacert.pem
+  tags:
+    - purge

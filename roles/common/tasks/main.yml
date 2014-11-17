@@ -1,0 +1,30 @@
+---
+# file: roles/common/tasks/main.yml
+- name: upgrade system
+  sudo: yes
+  apt: update_cache=yes upgrade=yes
+
+- name: install system dependencies
+  sudo: yes
+  apt: update_cache=yes name={{ item }} state=present
+  with_items:
+    - ruby1.9.1
+    - ruby1.9.1-dev
+    - git
+    - build-essential
+    - cmake
+
+- name: install bundler
+  sudo: yes
+  gem: name=bundler state=present user_install=no
+
+- name: add omnibus-build user
+  sudo: yes
+  user: name=omnibus-build comment="Omnibus Build" shell=/bin/bash
+
+- name: create build directories
+  sudo: yes
+  file: path={{ item }} state=directory owner=omnibus-build group=omnibus-build recurse=yes
+  with_items:
+    - /opt/gitlab/
+    - /var/cache/omnibus
